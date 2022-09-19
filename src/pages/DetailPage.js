@@ -18,13 +18,12 @@ import CardMedia from "@mui/material/CardMedia";
 import apiService from "../app/apiService";
 import { Alert } from "@mui/material";
 import Loading from "../components/Loading";
-
+import { useAuth } from "../contexts/AuthContext";
 function DetailPage() {
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const params = useParams();
-
   useEffect(() => {
     if (params.id) {
       const getProduct = async () => {
@@ -45,7 +44,7 @@ function DetailPage() {
       getProduct();
     }
   }, [params]);
-
+  const auth = useAuth();
   return (
     <Container>
       <Breadcrumbs aria-label="breadcrumb" sx={{ mb: 4 }}>
@@ -122,6 +121,7 @@ function DetailPage() {
                           </Typography>
                           <Stack flexDirection="column" alignItems="end">
                             <IconButton
+                              onClick={() => auth.addFavoriteList(movie)}
                               size="large"
                               children={<StarIcon fontSize="large" />}
                               sx={{

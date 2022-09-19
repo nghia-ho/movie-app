@@ -17,7 +17,6 @@ function HomePage() {
   const [error, setError] = useState("");
   const [page, setPage] = useState();
   const [selectGenres, setSelectGenres] = useState();
-
   const defaultValues = {
     searchQuery: "",
   };
@@ -36,17 +35,17 @@ function HomePage() {
       try {
         if (filters.searchQuery) {
           const res = await apiService.get(
-            `search/movie?api_key=${API_KEY}&language=en-US&query=${filters.searchQuery}`
+            `search/movie?api_key=${API_KEY}&language=en-US&query=${filters.searchQuery}&with_genres=${selectGenres}&page=${page}`
+          );
+          setMovies(res.data.results);
+        } else {
+          const data = await apiService.get(
+            `discover/movie?api_key=${API_KEY}&with_genres=${selectGenres}&page=${page}`
           );
 
-          setMovies(res.data.results);
+          setMovies(data.data.results);
+          setError("");
         }
-        const data = await apiService.get(
-          `discover/movie?api_key=${API_KEY}&with_genres=${selectGenres}&page=${page}`
-        );
-
-        setMovies(data.data.results);
-        setError("");
       } catch (error) {
         console.log(error);
         setError(error.message);
