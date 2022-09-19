@@ -1,4 +1,3 @@
-import { FavoriteBorder } from "@mui/icons-material";
 import React, { useState, useContext, createContext, useEffect } from "react";
 
 const AuthContextType = {
