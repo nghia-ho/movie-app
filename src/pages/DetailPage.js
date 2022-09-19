@@ -10,6 +10,7 @@ import {
   Chip,
   IconButton,
   Stack,
+  Tooltip,
 } from "@mui/material";
 import { Link as RouterLink, useParams } from "react-router-dom";
 import Paper from "@mui/material/Paper";
@@ -120,15 +121,17 @@ function DetailPage() {
                             {movie.overview}
                           </Typography>
                           <Stack flexDirection="column" alignItems="end">
-                            <IconButton
-                              onClick={() => auth.addFavoriteList(movie)}
-                              size="large"
-                              children={<StarIcon fontSize="large" />}
-                              sx={{
-                                backgroundColor: "rgba(225,0,0,0.9)",
-                                marginRight: "30px",
-                              }}
-                            />
+                            <Tooltip title="i like this">
+                              <IconButton
+                                onClick={() => auth.addFavoriteList(movie)}
+                                size="large"
+                                children={<StarIcon fontSize="large" />}
+                                sx={{
+                                  backgroundColor: "red",
+                                  marginRight: "30px",
+                                }}
+                              />
+                            </Tooltip>
                             <Typography
                               sx={{
                                 marginRight: "34px",
