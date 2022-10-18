@@ -5,13 +5,12 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Stack } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-// import "../index.css";
+
 import StarsIcon from "@mui/icons-material/Stars";
 import { Box } from "@mui/system";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
-import "../index.css";
 
-function CardItem({ movie }) {
+function CardItem({ movie, height }) {
   const navigate = useNavigate();
 
   return (
@@ -24,22 +23,28 @@ function CardItem({ movie }) {
           transition: "transform 0.5s ease-in-out",
           "&:hover": { transform: "scale3d(1.05, 1.05, 1)" },
         },
+        height: 390,
       }}
-      className="container"
     >
       <CardMedia
         component="img"
-        height="400"
+        height={height}
         image={`https://image.tmdb.org/t/p/w500/${
           movie.poster_path || "/orV7mt3Gu4h2WEE2ki2CfeIkMuK.jpg"
         }`}
         alt=""
       />
-      <CardContent className="overlay">
+
+      <CardContent>
         <Typography gutterBottom variant="subtitle1" component="div">
-          {movie?.name || movie?.title}
+          {movie?.name?.slice(0, 18) || movie?.title?.slice(0, 18)}
         </Typography>
-        <Stack flexDirection="row" justifyContent="space-around" mt={1}>
+        <Stack
+          direction="row"
+          justifyContent="center"
+          alignItems="flex-end"
+          spacing={2}
+        >
           <Box
             display="flex"
             flexDirection="row"

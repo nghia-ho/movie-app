@@ -2,10 +2,10 @@ import React, { useState } from "react";
 
 import { IconButton, InputAdornment, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import { movieAPI } from "../api/api";
 import { Box } from "@mui/system";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { getSearchFilm } from "../features/movie/movieSlice";
 
 function SearchFilm({ handleSubmit }) {
   const [searchQuery, setSearchQuery] = useState("");
@@ -14,7 +14,7 @@ function SearchFilm({ handleSubmit }) {
   const onSubmit = async (e) => {
     e.preventDefault();
     handleSubmit(searchQuery);
-    // dispatch();
+    dispatch(getSearchFilm(searchQuery));
     navigate("/search");
   };
 

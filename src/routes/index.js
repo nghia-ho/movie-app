@@ -5,7 +5,7 @@ import MainLayout from "../layouts/MainLayout";
 import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";
 import MovieDiscovery from "../pages/MovieDiscovery";
-import Search from "../pages/Search.js";
+import SearchPage from "../pages/SearchPage.js";
 import TVDiscovery from "../pages/TVDiscovery";
 import AuthRequire from "./AuthRequire";
 
@@ -23,7 +23,7 @@ function Router() {
         <Route index element={<HomePage />} />
         <Route path="movie" element={<MovieDiscovery />} />
         <Route path="tv" element={<TVDiscovery />} />
-        <Route path="search" element={<Search />} />
+        <Route path="search" element={<SearchPage />} />
       </Route>
 
       <Route element={<BlankLayout />}>

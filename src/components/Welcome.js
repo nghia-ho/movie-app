@@ -4,7 +4,7 @@ import ProductHeroLayout from "./ProductHeroLayout";
 import { Stack } from "@mui/system";
 import SearchFilm from "./SearchFilm";
 const cover = `https://images.unsplash.com/photo-1458053688450-eef5d21d43b3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1473&q=80`;
-export default function Welcome() {
+export default function Welcome({ content = "" }) {
   const [filterName, setFilterName] = React.useState("");
   const handleSubmit = (searchQuery) => {
     setFilterName(searchQuery);
@@ -26,7 +26,8 @@ export default function Welcome() {
           variant="h5"
           sx={{ mb: 4, mt: { sx: 4, sm: 10 } }}
         >
-          Millions of movies, TV shows and people to discover. Explore now.
+          {content ||
+            "Millions of movies, TV shows and people to discover. Explore now."}
         </Typography>
       </Stack>
       <SearchFilm handleSubmit={handleSubmit} />

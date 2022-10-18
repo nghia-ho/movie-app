@@ -28,7 +28,7 @@ function MovieDiscovery() {
               ) : (
                 <>
                   {error && <Alert severity="error">{error}</Alert>}
-                  <CardList movies={movies.results} />
+                  <CardList movies={movies.discovery.results} />
                 </>
               )}
             </Box>

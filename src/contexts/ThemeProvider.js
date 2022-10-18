@@ -6,8 +6,8 @@ import {
 
 const PRIMARY = {
   lighter: "#FFD07F",
-  light: "#FDA65D",
-  main: "#FF8243",
+  light: "#552244",
+  main: "#552244",
   dark: "#E26A2C",
   darker: "#cc571f",
   contrastText: "#FFF",

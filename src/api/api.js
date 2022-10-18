@@ -25,7 +25,7 @@ export const authAPI = {
 };
 
 export const movieAPI = {
-  getSearchMovie(movie, page = 1) {
+  getSearchMovie(movie, page) {
     return apiService.get(
       `/search/movie?api_key=${key}&language=en-US&query=${movie}&page=${page}&include_adult=false`
     );
@@ -63,6 +63,9 @@ export const movieAPI = {
     return apiService.get(
       `/discover/movie?api_key=${key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_watch_monetization_types=flatrate`
     );
+  },
+  getTrending(date) {
+    return apiService.get(`/trending/movie/${date}?api_key=${key}`);
   },
 };
 
